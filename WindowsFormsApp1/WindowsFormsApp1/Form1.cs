@@ -73,11 +73,6 @@ namespace WindowsFormsApp1
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void appendBtn_Click(object sender, EventArgs e)
         {
             if (enterBoxName.Text != "" && enterBoxCapital.Text != "" && enterBoxContinent.Text != "" && enterBoxPopulation.Text != "" && enterBoxArea.Text != "")
@@ -149,7 +144,7 @@ namespace WindowsFormsApp1
                 DelArr(states, curCount, Int32.Parse(enterDelBox.Text));
                 curCount--;
                 tabCount--;
-                refreshFields(states, tabCount);
+                refreshFields(enterChangeBox, states, tabCount);
                 enterDelBox.Clear();
             }
 
@@ -166,9 +161,51 @@ namespace WindowsFormsApp1
                 string field = changeBox1.Text;
                 string value = changeBox2.Text;
                 states[num - 1].Change(field, value);
-                refreshFields(states, tabCount);
+                refreshFields(enterChangeBox, states, tabCount);
             }
         }
+
+        //Section2
+
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            refreshFields(enterChangeBox1, states, tabCount);
+        }
+
+        private void massDelBtn_Click(object sender, EventArgs e)
+        {
+            long num = Int64.Parse(populDelBox.Text);
+            massDelArr(states, tabCount, num);
+            tabCount = 0;
+            while (states[tabCount] != null)
+            {
+                tabCount++;
+            }
+            refreshFields(enterChangeBox1, states, tabCount);
+            refreshFields(enterChangeBox, states, tabCount);
+        }
+
+        private void findCapitalBtn_Click(object sender, EventArgs e)
+        {
+            string text = findBox1.Text;
+            State[] statesTemp = new State[tabCount];
+            int j = 0;
+            for (int i = 0; i < tabCount; i++)
+            {
+                if (states[i].Capital == text)
+                {
+                    statesTemp[j] = states[i];
+                    j++;
+                }
+            }
+            refreshFields(enterChangeBox1, statesTemp, j);
+            //findCapital(states, tabCount, text);
+        }
+
+
+        //Functions
+
 
         static State[] addArr(State[] arr, int count)
         {
@@ -205,23 +242,52 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void refreshFields(State[] arr, int count)
+        static void massDelArr(State[] arr, int count, long numEnter)
         {
-            for (int i = 0; i < enterChangeBox.Rows.Count - 1; i++)
-            {
-                enterChangeBox.Rows.RemoveAt(i);
-            }
+            State[] statesTemp = new State[count];
+            int counter = 0, c = 0;
             for (int i = 0; i < count; i++)
             {
-                enterChangeBox.Rows.Add();
-                enterChangeBox.Rows[i].Cells[0].Value = i + 1;
-                enterChangeBox.Rows[i].Cells[1].Value = states[i].Countrname;
-                enterChangeBox.Rows[i].Cells[2].Value = states[i].Capital;
-                enterChangeBox.Rows[i].Cells[3].Value = states[i].Continent;
-                enterChangeBox.Rows[i].Cells[4].Value = states[i].Population;
-                enterChangeBox.Rows[i].Cells[5].Value = states[i].Area;
+                for (int j = 0; j < count; j++)
+                {
+                    if (arr[j].Population >= numEnter)
+                    {
+                        if (counter == i)
+                        {
+                            statesTemp[i] = arr[j];
+                            break;
+                        }
+                        counter++;
+                    }
+                }
+                counter = 0;
+            }
+            Array.Clear(arr, 0, count);
+            while (statesTemp[c] != null)
+            {
+                Console.WriteLine(c);
+                arr[c] = statesTemp[c];
+                c++;
             }
         }
 
+
+        private void refreshFields(DataGridView enterChange , State[] arr, int count)
+        {
+            for (int i = 0; i < enterChange.Rows.Count - 1; i++)
+            {
+                enterChange.Rows.RemoveAt(i);
+            }
+            for (int i = 0; i < count; i++)
+            {
+                enterChange.Rows.Add();
+                enterChange.Rows[i].Cells[0].Value = i + 1;
+                enterChange.Rows[i].Cells[1].Value = states[i].Countrname;
+                enterChange.Rows[i].Cells[2].Value = states[i].Capital;
+                enterChange.Rows[i].Cells[3].Value = states[i].Continent;
+                enterChange.Rows[i].Cells[4].Value = states[i].Population;
+                enterChange.Rows[i].Cells[5].Value = states[i].Area;
+            }
+        }
     }
 }

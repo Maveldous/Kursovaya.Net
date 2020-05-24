@@ -30,6 +30,16 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.change2lbl = new System.Windows.Forms.Label();
+            this.changeBox2 = new System.Windows.Forms.TextBox();
+            this.changeBox1 = new System.Windows.Forms.ComboBox();
+            this.change1lbl = new System.Windows.Forms.Label();
+            this.changeBtn = new System.Windows.Forms.Button();
+            this.changelbl = new System.Windows.Forms.Label();
+            this.changeBox = new System.Windows.Forms.TextBox();
+            this.delBtn = new System.Windows.Forms.Button();
+            this.delbl = new System.Windows.Forms.Label();
+            this.enterDelBox = new System.Windows.Forms.TextBox();
             this.enterBoxContinent = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,24 +59,32 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.massDelLbl = new System.Windows.Forms.Label();
+            this.massDelBtn = new System.Windows.Forms.Button();
+            this.massDelLbl2 = new System.Windows.Forms.Label();
+            this.populDelBox = new System.Windows.Forms.TextBox();
+            this.enterChangeBox1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.loadbtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.delbl = new System.Windows.Forms.Label();
-            this.enterDelBox = new System.Windows.Forms.TextBox();
-            this.delBtn = new System.Windows.Forms.Button();
-            this.changeBtn = new System.Windows.Forms.Button();
-            this.changelbl = new System.Windows.Forms.Label();
-            this.changeBox = new System.Windows.Forms.TextBox();
-            this.change1lbl = new System.Windows.Forms.Label();
-            this.changeBox1 = new System.Windows.Forms.ComboBox();
-            this.change2lbl = new System.Windows.Forms.Label();
-            this.changeBox2 = new System.Windows.Forms.TextBox();
+            this.findCapitalLbl = new System.Windows.Forms.Label();
+            this.findCapitalBtn = new System.Windows.Forms.Button();
+            this.findlbl1 = new System.Windows.Forms.Label();
+            this.findBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enterChangeBox)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.enterChangeBox1)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,11 +93,13 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(-2, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(871, 526);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage1
             // 
@@ -112,6 +132,102 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // change2lbl
+            // 
+            this.change2lbl.AutoSize = true;
+            this.change2lbl.Location = new System.Drawing.Point(11, 449);
+            this.change2lbl.Name = "change2lbl";
+            this.change2lbl.Size = new System.Drawing.Size(55, 13);
+            this.change2lbl.TabIndex = 23;
+            this.change2lbl.Text = "Значение";
+            // 
+            // changeBox2
+            // 
+            this.changeBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.changeBox2.Location = new System.Drawing.Point(14, 465);
+            this.changeBox2.Name = "changeBox2";
+            this.changeBox2.Size = new System.Drawing.Size(100, 20);
+            this.changeBox2.TabIndex = 22;
+            // 
+            // changeBox1
+            // 
+            this.changeBox1.CausesValidation = false;
+            this.changeBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.changeBox1.FormattingEnabled = true;
+            this.changeBox1.Items.AddRange(new object[] {
+            "Название",
+            "Столица",
+            "Континент",
+            "Численность населения",
+            "Занимаемая площадь"});
+            this.changeBox1.Location = new System.Drawing.Point(14, 412);
+            this.changeBox1.Name = "changeBox1";
+            this.changeBox1.Size = new System.Drawing.Size(130, 21);
+            this.changeBox1.TabIndex = 21;
+            // 
+            // change1lbl
+            // 
+            this.change1lbl.AutoSize = true;
+            this.change1lbl.Location = new System.Drawing.Point(7, 391);
+            this.change1lbl.Name = "change1lbl";
+            this.change1lbl.Size = new System.Drawing.Size(137, 13);
+            this.change1lbl.TabIndex = 20;
+            this.change1lbl.Text = "Поле изменяемого члена";
+            // 
+            // changeBtn
+            // 
+            this.changeBtn.Location = new System.Drawing.Point(126, 365);
+            this.changeBtn.Name = "changeBtn";
+            this.changeBtn.Size = new System.Drawing.Size(73, 23);
+            this.changeBtn.TabIndex = 18;
+            this.changeBtn.Text = "Изменить";
+            this.changeBtn.UseVisualStyleBackColor = true;
+            this.changeBtn.Click += new System.EventHandler(this.changeBtn_Click);
+            // 
+            // changelbl
+            // 
+            this.changelbl.AutoSize = true;
+            this.changelbl.Location = new System.Drawing.Point(7, 346);
+            this.changelbl.Name = "changelbl";
+            this.changelbl.Size = new System.Drawing.Size(145, 13);
+            this.changelbl.TabIndex = 17;
+            this.changelbl.Text = "Номер изменяемого члена";
+            // 
+            // changeBox
+            // 
+            this.changeBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.changeBox.Location = new System.Drawing.Point(14, 365);
+            this.changeBox.Name = "changeBox";
+            this.changeBox.Size = new System.Drawing.Size(100, 20);
+            this.changeBox.TabIndex = 16;
+            // 
+            // delBtn
+            // 
+            this.delBtn.Location = new System.Drawing.Point(126, 278);
+            this.delBtn.Name = "delBtn";
+            this.delBtn.Size = new System.Drawing.Size(73, 23);
+            this.delBtn.TabIndex = 15;
+            this.delBtn.Text = "Удалить";
+            this.delBtn.UseVisualStyleBackColor = true;
+            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
+            // 
+            // delbl
+            // 
+            this.delbl.AutoSize = true;
+            this.delbl.Location = new System.Drawing.Point(3, 262);
+            this.delbl.Name = "delbl";
+            this.delbl.Size = new System.Drawing.Size(136, 13);
+            this.delbl.TabIndex = 14;
+            this.delbl.Text = "Номер удаляемого члена";
+            // 
+            // enterDelBox
+            // 
+            this.enterDelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.enterDelBox.Location = new System.Drawing.Point(10, 281);
+            this.enterDelBox.Name = "enterDelBox";
+            this.enterDelBox.Size = new System.Drawing.Size(100, 20);
+            this.enterDelBox.TabIndex = 13;
             // 
             // enterBoxContinent
             // 
@@ -235,7 +351,6 @@
             this.enterChangeBox.Name = "enterChangeBox";
             this.enterChangeBox.Size = new System.Drawing.Size(645, 494);
             this.enterChangeBox.TabIndex = 0;
-            this.enterChangeBox.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1
             // 
@@ -275,13 +390,109 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.findCapitalLbl);
+            this.tabPage2.Controls.Add(this.findCapitalBtn);
+            this.tabPage2.Controls.Add(this.findlbl1);
+            this.tabPage2.Controls.Add(this.findBox1);
+            this.tabPage2.Controls.Add(this.massDelLbl);
+            this.tabPage2.Controls.Add(this.massDelBtn);
+            this.tabPage2.Controls.Add(this.massDelLbl2);
+            this.tabPage2.Controls.Add(this.populDelBox);
+            this.tabPage2.Controls.Add(this.enterChangeBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(863, 430);
+            this.tabPage2.Size = new System.Drawing.Size(863, 500);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Second";
+            this.tabPage2.Text = "Additional_functions";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // massDelLbl
+            // 
+            this.massDelLbl.AutoSize = true;
+            this.massDelLbl.Location = new System.Drawing.Point(24, 74);
+            this.massDelLbl.Name = "massDelLbl";
+            this.massDelLbl.Size = new System.Drawing.Size(74, 13);
+            this.massDelLbl.TabIndex = 19;
+            this.massDelLbl.Text = "Численность";
+            // 
+            // massDelBtn
+            // 
+            this.massDelBtn.Location = new System.Drawing.Point(119, 88);
+            this.massDelBtn.Name = "massDelBtn";
+            this.massDelBtn.Size = new System.Drawing.Size(73, 23);
+            this.massDelBtn.TabIndex = 18;
+            this.massDelBtn.Text = "Удалить";
+            this.massDelBtn.UseVisualStyleBackColor = true;
+            this.massDelBtn.Click += new System.EventHandler(this.massDelBtn_Click);
+            // 
+            // massDelLbl2
+            // 
+            this.massDelLbl2.Location = new System.Drawing.Point(24, 18);
+            this.massDelLbl2.Name = "massDelLbl2";
+            this.massDelLbl2.Size = new System.Drawing.Size(143, 46);
+            this.massDelLbl2.TabIndex = 17;
+            this.massDelLbl2.Text = "Удаление всех стран, у которых численность меньше заданной:";
+            // 
+            // populDelBox
+            // 
+            this.populDelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.populDelBox.Location = new System.Drawing.Point(13, 91);
+            this.populDelBox.Name = "populDelBox";
+            this.populDelBox.Size = new System.Drawing.Size(100, 20);
+            this.populDelBox.TabIndex = 16;
+            // 
+            // enterChangeBox1
+            // 
+            this.enterChangeBox1.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.enterChangeBox1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.enterChangeBox1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.enterChangeBox1.Location = new System.Drawing.Point(215, 3);
+            this.enterChangeBox1.Name = "enterChangeBox1";
+            this.enterChangeBox1.Size = new System.Drawing.Size(645, 494);
+            this.enterChangeBox1.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Номер";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Название";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Столица";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Континент";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Численность населения";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Занимаемая площадь";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // tabPage3
             // 
@@ -314,105 +525,53 @@
             this.savebtn.UseVisualStyleBackColor = true;
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(863, 500);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Reference";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // delbl
+            // findCapitalLbl
             // 
-            this.delbl.AutoSize = true;
-            this.delbl.Location = new System.Drawing.Point(3, 262);
-            this.delbl.Name = "delbl";
-            this.delbl.Size = new System.Drawing.Size(136, 13);
-            this.delbl.TabIndex = 14;
-            this.delbl.Text = "Номер удаляемого члена";
+            this.findCapitalLbl.AutoSize = true;
+            this.findCapitalLbl.Location = new System.Drawing.Point(24, 156);
+            this.findCapitalLbl.Name = "findCapitalLbl";
+            this.findCapitalLbl.Size = new System.Drawing.Size(57, 13);
+            this.findCapitalLbl.TabIndex = 23;
+            this.findCapitalLbl.Text = "Название";
             // 
-            // enterDelBox
+            // findCapitalBtn
             // 
-            this.enterDelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.enterDelBox.Location = new System.Drawing.Point(10, 281);
-            this.enterDelBox.Name = "enterDelBox";
-            this.enterDelBox.Size = new System.Drawing.Size(100, 20);
-            this.enterDelBox.TabIndex = 13;
+            this.findCapitalBtn.Location = new System.Drawing.Point(119, 170);
+            this.findCapitalBtn.Name = "findCapitalBtn";
+            this.findCapitalBtn.Size = new System.Drawing.Size(73, 23);
+            this.findCapitalBtn.TabIndex = 22;
+            this.findCapitalBtn.Text = "Поиск";
+            this.findCapitalBtn.UseVisualStyleBackColor = true;
+            this.findCapitalBtn.Click += new System.EventHandler(this.findCapitalBtn_Click);
             // 
-            // delBtn
+            // findlbl1
             // 
-            this.delBtn.Location = new System.Drawing.Point(126, 278);
-            this.delBtn.Name = "delBtn";
-            this.delBtn.Size = new System.Drawing.Size(73, 23);
-            this.delBtn.TabIndex = 15;
-            this.delBtn.Text = "Удалить";
-            this.delBtn.UseVisualStyleBackColor = true;
-            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
+            this.findlbl1.Location = new System.Drawing.Point(10, 130);
+            this.findlbl1.Name = "findlbl1";
+            this.findlbl1.Size = new System.Drawing.Size(168, 28);
+            this.findlbl1.TabIndex = 21;
+            this.findlbl1.Text = "Поиск по названию столицы:";
             // 
-            // changeBtn
+            // findBox1
             // 
-            this.changeBtn.Location = new System.Drawing.Point(126, 365);
-            this.changeBtn.Name = "changeBtn";
-            this.changeBtn.Size = new System.Drawing.Size(73, 23);
-            this.changeBtn.TabIndex = 18;
-            this.changeBtn.Text = "Изменить";
-            this.changeBtn.UseVisualStyleBackColor = true;
-            this.changeBtn.Click += new System.EventHandler(this.changeBtn_Click);
-            // 
-            // changelbl
-            // 
-            this.changelbl.AutoSize = true;
-            this.changelbl.Location = new System.Drawing.Point(7, 346);
-            this.changelbl.Name = "changelbl";
-            this.changelbl.Size = new System.Drawing.Size(145, 13);
-            this.changelbl.TabIndex = 17;
-            this.changelbl.Text = "Номер изменяемого члена";
-            // 
-            // changeBox
-            // 
-            this.changeBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.changeBox.Location = new System.Drawing.Point(14, 365);
-            this.changeBox.Name = "changeBox";
-            this.changeBox.Size = new System.Drawing.Size(100, 20);
-            this.changeBox.TabIndex = 16;
-            // 
-            // change1lbl
-            // 
-            this.change1lbl.AutoSize = true;
-            this.change1lbl.Location = new System.Drawing.Point(7, 391);
-            this.change1lbl.Name = "change1lbl";
-            this.change1lbl.Size = new System.Drawing.Size(137, 13);
-            this.change1lbl.TabIndex = 20;
-            this.change1lbl.Text = "Поле изменяемого члена";
-            // 
-            // changeBox1
-            // 
-            this.changeBox1.CausesValidation = false;
-            this.changeBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.changeBox1.FormattingEnabled = true;
-            this.changeBox1.Items.AddRange(new object[] {
-            "Название",
-            "Столица",
-            "Континент",
-            "Численность населения",
-            "Занимаемая площадь"});
-            this.changeBox1.Location = new System.Drawing.Point(14, 412);
-            this.changeBox1.Name = "changeBox1";
-            this.changeBox1.Size = new System.Drawing.Size(130, 21);
-            this.changeBox1.TabIndex = 21;
-            // 
-            // change2lbl
-            // 
-            this.change2lbl.AutoSize = true;
-            this.change2lbl.Location = new System.Drawing.Point(11, 449);
-            this.change2lbl.Name = "change2lbl";
-            this.change2lbl.Size = new System.Drawing.Size(55, 13);
-            this.change2lbl.TabIndex = 23;
-            this.change2lbl.Text = "Значение";
-            // 
-            // changeBox2
-            // 
-            this.changeBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.changeBox2.Location = new System.Drawing.Point(14, 465);
-            this.changeBox2.Name = "changeBox2";
-            this.changeBox2.Size = new System.Drawing.Size(100, 20);
-            this.changeBox2.TabIndex = 22;
+            this.findBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.findBox1.Location = new System.Drawing.Point(13, 173);
+            this.findBox1.Name = "findBox1";
+            this.findBox1.Size = new System.Drawing.Size(100, 20);
+            this.findBox1.TabIndex = 20;
             // 
             // Form1
             // 
@@ -427,6 +586,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enterChangeBox)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.enterChangeBox1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -470,6 +632,22 @@
         private System.Windows.Forms.Label change1lbl;
         private System.Windows.Forms.Label change2lbl;
         private System.Windows.Forms.TextBox changeBox2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView enterChangeBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Label massDelLbl;
+        private System.Windows.Forms.Button massDelBtn;
+        private System.Windows.Forms.Label massDelLbl2;
+        private System.Windows.Forms.TextBox populDelBox;
+        private System.Windows.Forms.Label findCapitalLbl;
+        private System.Windows.Forms.Button findCapitalBtn;
+        private System.Windows.Forms.Label findlbl1;
+        private System.Windows.Forms.TextBox findBox1;
     }
 }
 
