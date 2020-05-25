@@ -59,6 +59,10 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.findCapitalLbl = new System.Windows.Forms.Label();
+            this.findCapitalBtn = new System.Windows.Forms.Button();
+            this.findlbl1 = new System.Windows.Forms.Label();
+            this.findBox1 = new System.Windows.Forms.TextBox();
             this.massDelLbl = new System.Windows.Forms.Label();
             this.massDelBtn = new System.Windows.Forms.Button();
             this.massDelLbl2 = new System.Windows.Forms.Label();
@@ -76,10 +80,14 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.findCapitalLbl = new System.Windows.Forms.Label();
-            this.findCapitalBtn = new System.Windows.Forms.Button();
-            this.findlbl1 = new System.Windows.Forms.Label();
-            this.findBox1 = new System.Windows.Forms.TextBox();
+            this.findlbl3 = new System.Windows.Forms.Label();
+            this.findAreaBtn = new System.Windows.Forms.Button();
+            this.findlbl2 = new System.Windows.Forms.Label();
+            this.findAreaBox = new System.Windows.Forms.TextBox();
+            this.find3lbl = new System.Windows.Forms.Label();
+            this.findNameBtn = new System.Windows.Forms.Button();
+            this.find2lbl = new System.Windows.Forms.Label();
+            this.findNameBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enterChangeBox)).BeginInit();
@@ -390,6 +398,14 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.find3lbl);
+            this.tabPage2.Controls.Add(this.findNameBtn);
+            this.tabPage2.Controls.Add(this.find2lbl);
+            this.tabPage2.Controls.Add(this.findNameBox);
+            this.tabPage2.Controls.Add(this.findlbl3);
+            this.tabPage2.Controls.Add(this.findAreaBtn);
+            this.tabPage2.Controls.Add(this.findlbl2);
+            this.tabPage2.Controls.Add(this.findAreaBox);
             this.tabPage2.Controls.Add(this.findCapitalLbl);
             this.tabPage2.Controls.Add(this.findCapitalBtn);
             this.tabPage2.Controls.Add(this.findlbl1);
@@ -406,6 +422,41 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Additional_functions";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // findCapitalLbl
+            // 
+            this.findCapitalLbl.AutoSize = true;
+            this.findCapitalLbl.Location = new System.Drawing.Point(24, 156);
+            this.findCapitalLbl.Name = "findCapitalLbl";
+            this.findCapitalLbl.Size = new System.Drawing.Size(57, 13);
+            this.findCapitalLbl.TabIndex = 23;
+            this.findCapitalLbl.Text = "Название";
+            // 
+            // findCapitalBtn
+            // 
+            this.findCapitalBtn.Location = new System.Drawing.Point(119, 170);
+            this.findCapitalBtn.Name = "findCapitalBtn";
+            this.findCapitalBtn.Size = new System.Drawing.Size(73, 23);
+            this.findCapitalBtn.TabIndex = 22;
+            this.findCapitalBtn.Text = "Поиск";
+            this.findCapitalBtn.UseVisualStyleBackColor = true;
+            this.findCapitalBtn.Click += new System.EventHandler(this.findCapitalBtn_Click);
+            // 
+            // findlbl1
+            // 
+            this.findlbl1.Location = new System.Drawing.Point(10, 130);
+            this.findlbl1.Name = "findlbl1";
+            this.findlbl1.Size = new System.Drawing.Size(168, 28);
+            this.findlbl1.TabIndex = 21;
+            this.findlbl1.Text = "Поиск по названию столицы:";
+            // 
+            // findBox1
+            // 
+            this.findBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.findBox1.Location = new System.Drawing.Point(13, 173);
+            this.findBox1.Name = "findBox1";
+            this.findBox1.Size = new System.Drawing.Size(100, 20);
+            this.findBox1.TabIndex = 20;
             // 
             // massDelLbl
             // 
@@ -538,40 +589,75 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // findCapitalLbl
+            // findlbl3
             // 
-            this.findCapitalLbl.AutoSize = true;
-            this.findCapitalLbl.Location = new System.Drawing.Point(24, 156);
-            this.findCapitalLbl.Name = "findCapitalLbl";
-            this.findCapitalLbl.Size = new System.Drawing.Size(57, 13);
-            this.findCapitalLbl.TabIndex = 23;
-            this.findCapitalLbl.Text = "Название";
+            this.findlbl3.AutoSize = true;
+            this.findlbl3.Location = new System.Drawing.Point(24, 249);
+            this.findlbl3.Name = "findlbl3";
+            this.findlbl3.Size = new System.Drawing.Size(54, 13);
+            this.findlbl3.TabIndex = 27;
+            this.findlbl3.Text = "Площадь";
             // 
-            // findCapitalBtn
+            // findAreaBtn
             // 
-            this.findCapitalBtn.Location = new System.Drawing.Point(119, 170);
-            this.findCapitalBtn.Name = "findCapitalBtn";
-            this.findCapitalBtn.Size = new System.Drawing.Size(73, 23);
-            this.findCapitalBtn.TabIndex = 22;
-            this.findCapitalBtn.Text = "Поиск";
-            this.findCapitalBtn.UseVisualStyleBackColor = true;
-            this.findCapitalBtn.Click += new System.EventHandler(this.findCapitalBtn_Click);
+            this.findAreaBtn.Location = new System.Drawing.Point(119, 263);
+            this.findAreaBtn.Name = "findAreaBtn";
+            this.findAreaBtn.Size = new System.Drawing.Size(73, 23);
+            this.findAreaBtn.TabIndex = 26;
+            this.findAreaBtn.Text = "Поиск";
+            this.findAreaBtn.UseVisualStyleBackColor = true;
+            this.findAreaBtn.Click += new System.EventHandler(this.findAreaBtn_Click);
             // 
-            // findlbl1
+            // findlbl2
             // 
-            this.findlbl1.Location = new System.Drawing.Point(10, 130);
-            this.findlbl1.Name = "findlbl1";
-            this.findlbl1.Size = new System.Drawing.Size(168, 28);
-            this.findlbl1.TabIndex = 21;
-            this.findlbl1.Text = "Поиск по названию столицы:";
+            this.findlbl2.Location = new System.Drawing.Point(10, 214);
+            this.findlbl2.Name = "findlbl2";
+            this.findlbl2.Size = new System.Drawing.Size(168, 28);
+            this.findlbl2.TabIndex = 25;
+            this.findlbl2.Text = "Поиск по занимаемой площади свыше заданной:";
             // 
-            // findBox1
+            // findAreaBox
             // 
-            this.findBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.findBox1.Location = new System.Drawing.Point(13, 173);
-            this.findBox1.Name = "findBox1";
-            this.findBox1.Size = new System.Drawing.Size(100, 20);
-            this.findBox1.TabIndex = 20;
+            this.findAreaBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.findAreaBox.Location = new System.Drawing.Point(13, 266);
+            this.findAreaBox.Name = "findAreaBox";
+            this.findAreaBox.Size = new System.Drawing.Size(100, 20);
+            this.findAreaBox.TabIndex = 24;
+            // 
+            // find3lbl
+            // 
+            this.find3lbl.AutoSize = true;
+            this.find3lbl.Location = new System.Drawing.Point(24, 339);
+            this.find3lbl.Name = "find3lbl";
+            this.find3lbl.Size = new System.Drawing.Size(57, 13);
+            this.find3lbl.TabIndex = 31;
+            this.find3lbl.Text = "Название";
+            // 
+            // findNameBtn
+            // 
+            this.findNameBtn.Location = new System.Drawing.Point(119, 353);
+            this.findNameBtn.Name = "findNameBtn";
+            this.findNameBtn.Size = new System.Drawing.Size(73, 23);
+            this.findNameBtn.TabIndex = 30;
+            this.findNameBtn.Text = "Поиск";
+            this.findNameBtn.UseVisualStyleBackColor = true;
+            this.findNameBtn.Click += new System.EventHandler(this.findNameBtn_Click);
+            // 
+            // find2lbl
+            // 
+            this.find2lbl.Location = new System.Drawing.Point(10, 311);
+            this.find2lbl.Name = "find2lbl";
+            this.find2lbl.Size = new System.Drawing.Size(168, 28);
+            this.find2lbl.TabIndex = 29;
+            this.find2lbl.Text = "Поиск по ключевому полю";
+            // 
+            // findNameBox
+            // 
+            this.findNameBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.findNameBox.Location = new System.Drawing.Point(13, 356);
+            this.findNameBox.Name = "findNameBox";
+            this.findNameBox.Size = new System.Drawing.Size(100, 20);
+            this.findNameBox.TabIndex = 28;
             // 
             // Form1
             // 
@@ -581,7 +667,6 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Курсовая";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -648,6 +733,14 @@
         private System.Windows.Forms.Button findCapitalBtn;
         private System.Windows.Forms.Label findlbl1;
         private System.Windows.Forms.TextBox findBox1;
+        private System.Windows.Forms.Label findlbl3;
+        private System.Windows.Forms.Button findAreaBtn;
+        private System.Windows.Forms.Label findlbl2;
+        private System.Windows.Forms.TextBox findAreaBox;
+        private System.Windows.Forms.Label find3lbl;
+        private System.Windows.Forms.Button findNameBtn;
+        private System.Windows.Forms.Label find2lbl;
+        private System.Windows.Forms.TextBox findNameBox;
     }
 }
 

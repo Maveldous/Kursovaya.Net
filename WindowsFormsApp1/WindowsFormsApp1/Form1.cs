@@ -14,9 +14,18 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         int curCount = 1, tabCount = 0;
-        //int universal = 0;
         State[] states = new State[1];
-        //string countrname, capital, continent, capitalEnter, continentEnter;
+
+
+
+        //Section1
+
+
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
 
         private void enterBoxPopulation_Leave(object sender, EventArgs e)
         {
@@ -36,42 +45,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void savebtn_Click(object sender, EventArgs e)
-        {
-            saveFileDialog1.Title = "Save file";
-            saveFileDialog1.Filter = "All files |*.*";
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string path = saveFileDialog1.FileName;
-                try
-                {
-                    BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate));
-                    writer.Write(tabCount);
-                    for (int i = 0; i < tabCount; i++)
-                    {
-                        writer.Write(states[i].Countrname);
-                        writer.Write(states[i].Capital);
-                        writer.Write(states[i].Continent);
-                        writer.Write(states[i].Population);
-                        writer.Write(states[i].Area);
-                    }
-                }
-                catch (Exception s)
-                {
-                    MessageBox.Show(s.Message);
-                }
-            }
-        }
-
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void appendBtn_Click(object sender, EventArgs e)
         {
@@ -104,35 +77,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void loadbtn_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.Title = "Load file";
-            openFileDialog1.Filter = "All files |*.*";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string path = openFileDialog1.FileName;
-                int counts = 0;
-                try
-                {
-                    BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open));
-                    counts = reader.ReadInt32();
-                    for (int i = 0; i < counts; i++)
-                    {
-                        enterBoxName.Text = reader.ReadString();
-                        enterBoxCapital.Text = reader.ReadString();
-                        enterBoxContinent.Text = reader.ReadString();
-                        enterBoxPopulation.Text = Convert.ToString(reader.ReadInt64());
-                        enterBoxArea.Text = Convert.ToString(reader.ReadInt64());
-                        appendBtn_Click(0, EventArgs.Empty);
-
-                    }
-                }
-                catch (Exception s)
-                {
-                    MessageBox.Show(s.Message);
-                }
-            }
-        }
         private void delBtn_Click(object sender, EventArgs e)
         {
             if(enterDelBox.Text == "" || Int32.Parse(enterDelBox.Text) <= 0 || Int32.Parse(enterDelBox.Text) > tabCount)
@@ -151,7 +95,7 @@ namespace WindowsFormsApp1
         }
         private void changeBtn_Click(object sender, EventArgs e)
         {
-            if (changeBox.Text == "" || changeBox2.Text == "" || Int32.Parse(changeBox.Text) <= 0 || Int32.Parse(changeBox.Text) > tabCount)
+            if (!passCheck() || changeBox.Text == "" || changeBox2.Text == "" || Int32.Parse(changeBox.Text) <= 0 || Int32.Parse(changeBox.Text) > tabCount)
             {
                 MessageBox.Show("Введены некоректные значения!");
             }
@@ -200,12 +144,119 @@ namespace WindowsFormsApp1
                 }
             }
             refreshFields(enterChangeBox1, statesTemp, j);
-            //findCapital(states, tabCount, text);
         }
+
+        private void findAreaBtn_Click(object sender, EventArgs e)
+        {
+            long num = Int64.Parse(findAreaBox.Text);
+            State[] statesTemp = new State[tabCount];
+            int j = 0;
+            for (int i = 0; i < tabCount; i++)
+            {
+                if (states[i].Area > num)
+                {
+                    statesTemp[j] = states[i];
+                    j++;
+                }
+            }
+            refreshFields(enterChangeBox1, statesTemp, j);
+        }
+
+        private void findNameBtn_Click(object sender, EventArgs e)
+        {
+            string text = findNameBox.Text;
+            State[] statesTemp = new State[tabCount];
+            int j = 0;
+            for (int i = 0; i < tabCount; i++)
+            {
+                if (states[i].Countrname == text)
+                {
+                    statesTemp[j] = states[i];
+                    j++;
+                }
+            }
+            refreshFields(enterChangeBox1, statesTemp, j);
+        }
+
+
+
+        //Section3
+
+        
+        
+        private void savebtn_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Title = "Save file";
+            saveFileDialog1.Filter = "All files |*.*";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string path = saveFileDialog1.FileName;
+                try
+                {
+                    BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate));
+                    writer.Write(tabCount);
+                    for (int i = 0; i < tabCount; i++)
+                    {
+                        writer.Write(states[i].Countrname);
+                        writer.Write(states[i].Capital);
+                        writer.Write(states[i].Continent);
+                        writer.Write(states[i].Population);
+                        writer.Write(states[i].Area);
+                    }
+                }
+                catch (Exception s)
+                {
+                    MessageBox.Show(s.Message);
+                }
+            }
+        }
+
+
+        private void loadbtn_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "Load file";
+            openFileDialog1.Filter = "All files |*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string path = openFileDialog1.FileName;
+                int counts = 0;
+                try
+                {
+                    BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open));
+                    counts = reader.ReadInt32();
+                    for (int i = 0; i < counts; i++)
+                    {
+                        states[tabCount] = new State(reader.ReadString(), reader.ReadString(), reader.ReadString(), reader.ReadInt64(), reader.ReadInt64());
+                        states = addArr(states, curCount);
+                        curCount++;
+                        tabCount++;
+                    }
+                }
+                catch (Exception s)
+                {
+                    MessageBox.Show(s.Message);
+                }
+                refreshFields(enterChangeBox, states, tabCount);
+            }
+        }
+
 
 
         //Functions
 
+        
+
+        static bool passCheck()
+        {
+            Form2 testDialog = new Form2();
+            testDialog.ShowDialog();
+            if (testDialog.textpassbox.Text != "password")
+            {
+                MessageBox.Show("Wrong password");
+                return false;
+            }
+            else return true;
+        }
 
         static State[] addArr(State[] arr, int count)
         {
@@ -282,11 +333,11 @@ namespace WindowsFormsApp1
             {
                 enterChange.Rows.Add();
                 enterChange.Rows[i].Cells[0].Value = i + 1;
-                enterChange.Rows[i].Cells[1].Value = states[i].Countrname;
-                enterChange.Rows[i].Cells[2].Value = states[i].Capital;
-                enterChange.Rows[i].Cells[3].Value = states[i].Continent;
-                enterChange.Rows[i].Cells[4].Value = states[i].Population;
-                enterChange.Rows[i].Cells[5].Value = states[i].Area;
+                enterChange.Rows[i].Cells[1].Value = arr[i].Countrname;
+                enterChange.Rows[i].Cells[2].Value = arr[i].Capital;
+                enterChange.Rows[i].Cells[3].Value = arr[i].Continent;
+                enterChange.Rows[i].Cells[4].Value = arr[i].Population;
+                enterChange.Rows[i].Cells[5].Value = arr[i].Area;
             }
         }
     }
