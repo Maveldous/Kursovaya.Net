@@ -316,7 +316,6 @@
             this.enterBoxArea.Name = "enterBoxArea";
             this.enterBoxArea.Size = new System.Drawing.Size(100, 20);
             this.enterBoxArea.TabIndex = 5;
-            this.enterBoxArea.Leave += new System.EventHandler(this.enterBoxArea_Leave);
             // 
             // enterBoxPopulation
             // 
@@ -325,7 +324,6 @@
             this.enterBoxPopulation.Name = "enterBoxPopulation";
             this.enterBoxPopulation.Size = new System.Drawing.Size(100, 20);
             this.enterBoxPopulation.TabIndex = 4;
-            this.enterBoxPopulation.Leave += new System.EventHandler(this.enterBoxPopulation_Leave);
             // 
             // enterBoxCapital
             // 

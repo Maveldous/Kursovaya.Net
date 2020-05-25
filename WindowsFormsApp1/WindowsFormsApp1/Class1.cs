@@ -45,11 +45,22 @@ namespace WindowsFormsApp1
                     this.Continent = value;
                     break;
                 case "Численность населения":
-                    this.Population = Int64.Parse(value);
-                    break;
+                    if (value.Any(c => char.IsLetter(c)) || value == "" || Int64.Parse(value) <= 0 || Int64.Parse(value) > 10000000)
+                        break;
+                    else
+                    { 
+                        this.Population = Int64.Parse(value);
+                        break;
+                    }
+
                 default:
-                    this.Area = Int64.Parse(value);
-                    break;
+                    if (value.Any(c => char.IsLetter(c)) || value == "" || Int64.Parse(value) <= 0 || Int64.Parse(value) > 10000000)
+                        break;
+                    else
+                    {
+                        this.Area = Int64.Parse(value);
+                        break;
+                    }
             }
         }
         

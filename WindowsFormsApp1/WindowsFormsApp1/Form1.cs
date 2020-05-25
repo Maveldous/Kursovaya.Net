@@ -27,28 +27,10 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void enterBoxPopulation_Leave(object sender, EventArgs e)
-        {
-            if (long.Parse(enterBoxPopulation.Text) <= 0 || long.Parse(enterBoxPopulation.Text) > 10000000)
-            {
-                MessageBox.Show("Введите корректное значение");
-                enterBoxPopulation.Focus();
-            }
-        }
-
-        private void enterBoxArea_Leave(object sender, EventArgs e)
-        {
-            if (long.Parse(enterBoxArea.Text) <= 0 || long.Parse(enterBoxArea.Text) > 10000000)
-            {
-                MessageBox.Show("Введите корректное значение");
-                enterBoxArea.Focus();
-            }
-        }
-
-
         private void appendBtn_Click(object sender, EventArgs e)
         {
-            if (enterBoxName.Text != "" && enterBoxCapital.Text != "" && enterBoxContinent.Text != "" && enterBoxPopulation.Text != "" && enterBoxArea.Text != "")
+
+            if (enterBoxName.Text != "" && enterBoxCapital.Text != "" && enterBoxContinent.Text != "" && enterLongCheck(enterBoxPopulation.Text) && enterLongCheck(enterBoxArea.Text))
             {
                 enterChangeBox.Rows.Add();
                 enterChangeBox.Rows[tabCount].Cells[0].Value = curCount;
@@ -71,19 +53,13 @@ namespace WindowsFormsApp1
                 enterBoxArea.Clear();
 
             }
-            else
-            {
-                MessageBox.Show("Не все поля заполнены!");
-            }
+            else MessageBox.Show("Не все поля заполнены или заполнены некоректно!");
+
         }
 
         private void delBtn_Click(object sender, EventArgs e)
         {
-            if(enterDelBox.Text == "" || Int32.Parse(enterDelBox.Text) <= 0 || Int32.Parse(enterDelBox.Text) > tabCount)
-            {
-                MessageBox.Show("Введено некоректное значение");
-            }
-            else
+            if(passCheck() && enterIntCheck(enterDelBox.Text, tabCount))
             {
                 DelArr(states, curCount, Int32.Parse(enterDelBox.Text));
                 curCount--;
@@ -91,15 +67,11 @@ namespace WindowsFormsApp1
                 refreshFields(enterChangeBox, states, tabCount);
                 enterDelBox.Clear();
             }
-
+            else MessageBox.Show("Введены некоректные значения!");
         }
         private void changeBtn_Click(object sender, EventArgs e)
         {
-            if (!passCheck() || changeBox.Text == "" || changeBox2.Text == "" || Int32.Parse(changeBox.Text) <= 0 || Int32.Parse(changeBox.Text) > tabCount)
-            {
-                MessageBox.Show("Введены некоректные значения!");
-            }
-            else
+            if (passCheck() && enterIntCheck(changeBox.Text, tabCount) && changeBox1.Text != "")
             {
                 int num = Int32.Parse(changeBox.Text);
                 string field = changeBox1.Text;
@@ -107,6 +79,7 @@ namespace WindowsFormsApp1
                 states[num - 1].Change(field, value);
                 refreshFields(enterChangeBox, states, tabCount);
             }
+            else MessageBox.Show("Введены некоректные значения!");
         }
 
         //Section2
@@ -119,71 +92,87 @@ namespace WindowsFormsApp1
 
         private void massDelBtn_Click(object sender, EventArgs e)
         {
-            long num = Int64.Parse(populDelBox.Text);
-            massDelArr(states, tabCount, num);
-            tabCount = 0;
-            while (states[tabCount] != null)
+            if (passCheck() && enterLongCheck(populDelBox.Text))
             {
-                tabCount++;
+                long num = Int64.Parse(populDelBox.Text);
+                massDelArr(states, tabCount, num);
+                tabCount = 0;
+                while (states[tabCount] != null)
+                {
+                    tabCount++;
+                }
+                refreshFields(enterChangeBox1, states, tabCount);
+                refreshFields(enterChangeBox, states, tabCount);
             }
-            refreshFields(enterChangeBox1, states, tabCount);
-            refreshFields(enterChangeBox, states, tabCount);
+            else MessageBox.Show("Введены некоректные значения!");
         }
 
         private void findCapitalBtn_Click(object sender, EventArgs e)
         {
-            string text = findBox1.Text;
-            State[] statesTemp = new State[tabCount];
-            int j = 0;
-            for (int i = 0; i < tabCount; i++)
+            if(findBox1.Text != "")
             {
-                if (states[i].Capital == text)
+                string text = findBox1.Text;
+                State[] statesTemp = new State[tabCount];
+                int j = 0;
+                for (int i = 0; i < tabCount; i++)
                 {
-                    statesTemp[j] = states[i];
-                    j++;
+                    if (states[i].Capital == text)
+                    {
+                        statesTemp[j] = states[i];
+                        j++;
+                    }
                 }
+                refreshFields(enterChangeBox1, statesTemp, j);
             }
-            refreshFields(enterChangeBox1, statesTemp, j);
+            else MessageBox.Show("Пустое поле для ввода");
         }
 
         private void findAreaBtn_Click(object sender, EventArgs e)
         {
-            long num = Int64.Parse(findAreaBox.Text);
-            State[] statesTemp = new State[tabCount];
-            int j = 0;
-            for (int i = 0; i < tabCount; i++)
+            if (enterLongCheck(findAreaBox.Text))
             {
-                if (states[i].Area > num)
+                long num = Int64.Parse(findAreaBox.Text);
+                State[] statesTemp = new State[tabCount];
+                int j = 0;
+                for (int i = 0; i < tabCount; i++)
                 {
-                    statesTemp[j] = states[i];
-                    j++;
+                    if (states[i].Area > num)
+                    {
+                        statesTemp[j] = states[i];
+                        j++;
+                    }
                 }
+                refreshFields(enterChangeBox1, statesTemp, j);
             }
-            refreshFields(enterChangeBox1, statesTemp, j);
+            else MessageBox.Show("Введены некоректные значения!");
         }
 
         private void findNameBtn_Click(object sender, EventArgs e)
         {
-            string text = findNameBox.Text;
-            State[] statesTemp = new State[tabCount];
-            int j = 0;
-            for (int i = 0; i < tabCount; i++)
+            if(findNameBox.Text != "")
             {
-                if (states[i].Countrname == text)
+                string text = findNameBox.Text;
+                State[] statesTemp = new State[tabCount];
+                int j = 0;
+                for (int i = 0; i < tabCount; i++)
                 {
-                    statesTemp[j] = states[i];
-                    j++;
+                    if (states[i].Countrname == text)
+                    {
+                        statesTemp[j] = states[i];
+                        j++;
+                    }
                 }
+                refreshFields(enterChangeBox1, statesTemp, j);
             }
-            refreshFields(enterChangeBox1, statesTemp, j);
+            else MessageBox.Show("Пустое поле для ввода");
         }
 
 
 
         //Section3
 
-        
-        
+
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             saveFileDialog1.Title = "Save file";
@@ -244,7 +233,27 @@ namespace WindowsFormsApp1
 
         //Functions
 
-        
+
+        static bool enterIntCheck(string value, int count)
+        {
+            if (value.Any(c => char.IsLetter(c)))
+            {
+                return false;
+            }
+            if (value == "" || Int32.Parse(value) <= 0 || Int32.Parse(value) > count)
+                return false;
+            else
+                return true;
+        }
+
+
+        public bool enterLongCheck(string value)
+        {
+            if (value.Any(c => char.IsLetter(c)) || value == "" || Int64.Parse(value) <= 0 || Int64.Parse(value) > 10000000)
+                return false;        
+            else
+                return true;
+        }
 
         static bool passCheck()
         {
@@ -325,9 +334,9 @@ namespace WindowsFormsApp1
 
         private void refreshFields(DataGridView enterChange , State[] arr, int count)
         {
-            for (int i = 0; i < enterChange.Rows.Count - 1; i++)
+            for (int i = 0; i < enterChange.Rows.Count; i++)
             {
-                enterChange.Rows.RemoveAt(i);
+                enterChange.Rows.Clear();
             }
             for (int i = 0; i < count; i++)
             {
