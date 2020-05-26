@@ -59,6 +59,14 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.find3lbl = new System.Windows.Forms.Label();
+            this.findNameBtn = new System.Windows.Forms.Button();
+            this.find2lbl = new System.Windows.Forms.Label();
+            this.findNameBox = new System.Windows.Forms.TextBox();
+            this.findlbl3 = new System.Windows.Forms.Label();
+            this.findAreaBtn = new System.Windows.Forms.Button();
+            this.findlbl2 = new System.Windows.Forms.Label();
+            this.findAreaBox = new System.Windows.Forms.TextBox();
             this.findCapitalLbl = new System.Windows.Forms.Label();
             this.findCapitalBtn = new System.Windows.Forms.Button();
             this.findlbl1 = new System.Windows.Forms.Label();
@@ -77,17 +85,9 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.loadbtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.findlbl3 = new System.Windows.Forms.Label();
-            this.findAreaBtn = new System.Windows.Forms.Button();
-            this.findlbl2 = new System.Windows.Forms.Label();
-            this.findAreaBox = new System.Windows.Forms.TextBox();
-            this.find3lbl = new System.Windows.Forms.Label();
-            this.findNameBtn = new System.Windows.Forms.Button();
-            this.find2lbl = new System.Windows.Forms.Label();
-            this.findNameBox = new System.Windows.Forms.TextBox();
+            this.refBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enterChangeBox)).BeginInit();
@@ -101,7 +101,6 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(-2, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -421,6 +420,76 @@
             this.tabPage2.Text = "Additional_functions";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // find3lbl
+            // 
+            this.find3lbl.AutoSize = true;
+            this.find3lbl.Location = new System.Drawing.Point(24, 339);
+            this.find3lbl.Name = "find3lbl";
+            this.find3lbl.Size = new System.Drawing.Size(57, 13);
+            this.find3lbl.TabIndex = 31;
+            this.find3lbl.Text = "Название";
+            // 
+            // findNameBtn
+            // 
+            this.findNameBtn.Location = new System.Drawing.Point(119, 353);
+            this.findNameBtn.Name = "findNameBtn";
+            this.findNameBtn.Size = new System.Drawing.Size(73, 23);
+            this.findNameBtn.TabIndex = 30;
+            this.findNameBtn.Text = "Поиск";
+            this.findNameBtn.UseVisualStyleBackColor = true;
+            this.findNameBtn.Click += new System.EventHandler(this.findNameBtn_Click);
+            // 
+            // find2lbl
+            // 
+            this.find2lbl.Location = new System.Drawing.Point(10, 311);
+            this.find2lbl.Name = "find2lbl";
+            this.find2lbl.Size = new System.Drawing.Size(168, 28);
+            this.find2lbl.TabIndex = 29;
+            this.find2lbl.Text = "Поиск по ключевому полю";
+            // 
+            // findNameBox
+            // 
+            this.findNameBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.findNameBox.Location = new System.Drawing.Point(13, 356);
+            this.findNameBox.Name = "findNameBox";
+            this.findNameBox.Size = new System.Drawing.Size(100, 20);
+            this.findNameBox.TabIndex = 28;
+            // 
+            // findlbl3
+            // 
+            this.findlbl3.AutoSize = true;
+            this.findlbl3.Location = new System.Drawing.Point(24, 249);
+            this.findlbl3.Name = "findlbl3";
+            this.findlbl3.Size = new System.Drawing.Size(54, 13);
+            this.findlbl3.TabIndex = 27;
+            this.findlbl3.Text = "Площадь";
+            // 
+            // findAreaBtn
+            // 
+            this.findAreaBtn.Location = new System.Drawing.Point(119, 263);
+            this.findAreaBtn.Name = "findAreaBtn";
+            this.findAreaBtn.Size = new System.Drawing.Size(73, 23);
+            this.findAreaBtn.TabIndex = 26;
+            this.findAreaBtn.Text = "Поиск";
+            this.findAreaBtn.UseVisualStyleBackColor = true;
+            this.findAreaBtn.Click += new System.EventHandler(this.findAreaBtn_Click);
+            // 
+            // findlbl2
+            // 
+            this.findlbl2.Location = new System.Drawing.Point(10, 214);
+            this.findlbl2.Name = "findlbl2";
+            this.findlbl2.Size = new System.Drawing.Size(168, 28);
+            this.findlbl2.TabIndex = 25;
+            this.findlbl2.Text = "Поиск по занимаемой площади свыше заданной:";
+            // 
+            // findAreaBox
+            // 
+            this.findAreaBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.findAreaBox.Location = new System.Drawing.Point(13, 266);
+            this.findAreaBox.Name = "findAreaBox";
+            this.findAreaBox.Size = new System.Drawing.Size(100, 20);
+            this.findAreaBox.TabIndex = 24;
+            // 
             // findCapitalLbl
             // 
             this.findCapitalLbl.AutoSize = true;
@@ -545,13 +614,14 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.refBtn);
             this.tabPage3.Controls.Add(this.loadbtn);
             this.tabPage3.Controls.Add(this.savebtn);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(863, 500);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Save & Load";
+            this.tabPage3.Text = "Save & Load & Ref";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // loadbtn
@@ -574,88 +644,19 @@
             this.savebtn.UseVisualStyleBackColor = true;
             this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(863, 500);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Reference";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // findlbl3
+            // refBtn
             // 
-            this.findlbl3.AutoSize = true;
-            this.findlbl3.Location = new System.Drawing.Point(24, 249);
-            this.findlbl3.Name = "findlbl3";
-            this.findlbl3.Size = new System.Drawing.Size(54, 13);
-            this.findlbl3.TabIndex = 27;
-            this.findlbl3.Text = "Площадь";
-            // 
-            // findAreaBtn
-            // 
-            this.findAreaBtn.Location = new System.Drawing.Point(119, 263);
-            this.findAreaBtn.Name = "findAreaBtn";
-            this.findAreaBtn.Size = new System.Drawing.Size(73, 23);
-            this.findAreaBtn.TabIndex = 26;
-            this.findAreaBtn.Text = "Поиск";
-            this.findAreaBtn.UseVisualStyleBackColor = true;
-            this.findAreaBtn.Click += new System.EventHandler(this.findAreaBtn_Click);
-            // 
-            // findlbl2
-            // 
-            this.findlbl2.Location = new System.Drawing.Point(10, 214);
-            this.findlbl2.Name = "findlbl2";
-            this.findlbl2.Size = new System.Drawing.Size(168, 28);
-            this.findlbl2.TabIndex = 25;
-            this.findlbl2.Text = "Поиск по занимаемой площади свыше заданной:";
-            // 
-            // findAreaBox
-            // 
-            this.findAreaBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.findAreaBox.Location = new System.Drawing.Point(13, 266);
-            this.findAreaBox.Name = "findAreaBox";
-            this.findAreaBox.Size = new System.Drawing.Size(100, 20);
-            this.findAreaBox.TabIndex = 24;
-            // 
-            // find3lbl
-            // 
-            this.find3lbl.AutoSize = true;
-            this.find3lbl.Location = new System.Drawing.Point(24, 339);
-            this.find3lbl.Name = "find3lbl";
-            this.find3lbl.Size = new System.Drawing.Size(57, 13);
-            this.find3lbl.TabIndex = 31;
-            this.find3lbl.Text = "Название";
-            // 
-            // findNameBtn
-            // 
-            this.findNameBtn.Location = new System.Drawing.Point(119, 353);
-            this.findNameBtn.Name = "findNameBtn";
-            this.findNameBtn.Size = new System.Drawing.Size(73, 23);
-            this.findNameBtn.TabIndex = 30;
-            this.findNameBtn.Text = "Поиск";
-            this.findNameBtn.UseVisualStyleBackColor = true;
-            this.findNameBtn.Click += new System.EventHandler(this.findNameBtn_Click);
-            // 
-            // find2lbl
-            // 
-            this.find2lbl.Location = new System.Drawing.Point(10, 311);
-            this.find2lbl.Name = "find2lbl";
-            this.find2lbl.Size = new System.Drawing.Size(168, 28);
-            this.find2lbl.TabIndex = 29;
-            this.find2lbl.Text = "Поиск по ключевому полю";
-            // 
-            // findNameBox
-            // 
-            this.findNameBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.findNameBox.Location = new System.Drawing.Point(13, 356);
-            this.findNameBox.Name = "findNameBox";
-            this.findNameBox.Size = new System.Drawing.Size(100, 20);
-            this.findNameBox.TabIndex = 28;
+            this.refBtn.Location = new System.Drawing.Point(271, 278);
+            this.refBtn.Name = "refBtn";
+            this.refBtn.Size = new System.Drawing.Size(343, 83);
+            this.refBtn.TabIndex = 2;
+            this.refBtn.Text = "Reference";
+            this.refBtn.UseVisualStyleBackColor = true;
+            this.refBtn.Click += new System.EventHandler(this.refBtn_Click);
             // 
             // Form1
             // 
@@ -715,7 +716,6 @@
         private System.Windows.Forms.Label change1lbl;
         private System.Windows.Forms.Label change2lbl;
         private System.Windows.Forms.TextBox changeBox2;
-        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView enterChangeBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -739,6 +739,7 @@
         private System.Windows.Forms.Button findNameBtn;
         private System.Windows.Forms.Label find2lbl;
         private System.Windows.Forms.TextBox findNameBox;
+        private System.Windows.Forms.Button refBtn;
     }
 }
 

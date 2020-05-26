@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Net.Http;
 
 namespace WindowsFormsApp1
 {
@@ -229,11 +230,17 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void refBtn_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("opera.exe", "file:///C:/Users/User/Source/Repos/Kursach/WindowsFormsApp1/WindowsFormsApp1/ref.html");
+        }
+
 
 
         //Functions
 
 
+        
         static bool enterIntCheck(string value, int count)
         {
             if (value.Any(c => char.IsLetter(c)))
@@ -330,7 +337,6 @@ namespace WindowsFormsApp1
                 c++;
             }
         }
-
 
         private void refreshFields(DataGridView enterChange , State[] arr, int count)
         {
